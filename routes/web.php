@@ -41,3 +41,35 @@ Route::group(['middleware' => ['auth','is_admin'],'prefix' => 'admin','as' => 'a
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class)->only(['index','destroy']);
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
 });
+
+
+// member
+Route::get('loginmember', [\App\Http\Controllers\Member\LoginMemberController::class, 'showLoginForm'])->name('member.login');
+Route::post('/login-member', [\App\Http\Controllers\Member\LoginMemberController::class, 'login'])->name('login.members');
+
+Route::get('registermember', [\App\Http\Controllers\Member\RegisterMemberController::class, 'showRegisterForm'])->name('member.register');
+
+Route::post('/registernow', [\App\Http\Controllers\Member\RegisterMemberController::class, 'register'])->name('registernow');
+
+
+Route::middleware(['members'])->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\Member\DashboardMemberController::class, 'index']);
+    // Tambahkan rute-rute lain yang memerlukan middleware 'members' di sini
+
+    Route::get('/cars-member', [\App\Http\Controllers\Member\CarsMemberController::class, 'index'])->name('member.cars.index');
+    Route::get('booking-cars-member/{carId}', [\App\Http\Controllers\Member\CarsMemberController::class, 'booking'])->name('member.cars.booking');
+    Route::post('store_booking', [\App\Http\Controllers\Member\CarsMemberController::class, 'store_booking'])->name('member.cars.storebooking');
+
+    Route::get('/peminjaman-member', [\App\Http\Controllers\Member\PeminjamanMemberController::class, 'index'])->name('member.peminjaman.index');
+
+    Route::get('retur-peminjaman-member/{bookingId}', [\App\Http\Controllers\Member\PeminjamanMemberController::class, 'return'])->name('member.peminjaman.retur');
+
+    Route::post('store_retur', [\App\Http\Controllers\Member\PeminjamanMemberController::class, 'store_retur'])->name('member.peminjaman.storeretur');
+
+    Route::get('/pengembalian-member', [\App\Http\Controllers\Member\PegembalianMemberController::class, 'index'])->name('member.pengembalian.index');
+
+    Route::get('retur-pengembalian-member/{returId}', [\App\Http\Controllers\Member\PegembalianMemberController::class, 'retur'])->name('member.pengembalian.pay');
+
+    Route::put('/pengembalian/payment', [\App\Http\Controllers\Member\PegembalianMemberController::class, 'payment'])->name('member.pengembalian.payment');
+
+});
