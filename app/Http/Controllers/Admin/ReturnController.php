@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Booking;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pengembalian;
+use Illuminate\Http\Request;
 
-class BookingController extends Controller
+class ReturnController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $bookings = Booking::with('car')->get();
+        $returns = Pengembalian::get();
 
-        return view('admin.bookings.index', compact('bookings'));
+        return view('admin.pengembalian.index', compact('returns'));
     }
 
     /**
@@ -37,7 +37,7 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Booking $booking)
+    public function show(string $id)
     {
         //
     }
@@ -45,20 +45,20 @@ class BookingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Booking $booking)
+    public function edit(Pengembalian $pengembalian)
     {
-        $booking = Booking::where('id', request()->segment(3))->first();
+        $returns = Pengembalian::where('id', request()->segment(3))->first();
 
-        return view('admin.bookings.edit', compact('booking'));
+        return view('admin.pengembalian.edit', compact('returns'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, Pengembalian $pengembalian)
     {
-        $booking->update($request->all());
-        return redirect()->route('admin.bookings.index')->with([
+        $pengembalian->update($request->all());
+        return redirect()->route('admin.pengembalian.index')->with([
             'message' => 'berhasil di edit',
             'alert-type' => 'info'
         ]);
@@ -67,12 +67,12 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Booking $booking)
+    public function destroy(Pengembalian $pengembalian)
     {
-        $booking->delete();
+        $pengembalian->delete();
 
         return redirect()->back()->with([
-            'message' => 'berhasil di hapus !',
+            'message' => 'berhasil di hapus!',
             'alert-type' => 'danger'
         ]);
     }

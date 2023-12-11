@@ -35,7 +35,11 @@ class PegembalianMemberController extends Controller
         $pengembalian = Pengembalian::find($id);
 
         // Update the attributes
-        $pengembalian->bayar = $validatedData['bayar'];
+        if($pengembalian->total_pay < $validatedData['bayar']) {
+            return redirect()->back()->with('error', 'Uang yang dibayarkan melebihi total yang harus dibayarkan');
+        } else {
+            $pengembalian->bayar =  $validatedData['bayar'];
+        }
         $pengembalian->no_plat = $validatedData['no_plat'];
 
         // Save the changes

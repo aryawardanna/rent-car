@@ -18,31 +18,29 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Alamat Lengkap</th>
-                                            <th>Nomer HP/Whatsap</th>
-                                            <th>Mobil</th>
+                                            <th>Tanggal Akhir</th>
+                                            <th>Total pay</th>
+                                            <th>Nomor plat</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($bookings as $booking)
+                                        @forelse($returns as $booking)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $booking->nama_lengkap }}</td>
-                                                <td>{{ $booking->alamat_lengkap }}</td>
-                                                <td>
-                                                    <a href="telp:{{ $booking->nomer_wa }}">{{ $booking->nomer_wa }}</a>
-                                                </td>
-                                                <td>{{ $booking->car->nama_mobil }}</td>
+                                                <td>{{ $booking->end_date }}</td>
+                                                <td>{{ $booking->total_pay }}</td>
+                                                <td>{{ $booking->no_plat }}</td>
+                                                <td>{{ $booking->status }}</td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
-                                                        <a href="{{ route('admin.bookings.edit', $booking) }}"
+                                                        <a href="{{ route('admin.pengembalian.edit', $booking) }}"
                                                             class="btn btn-sm btn-primary">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         <form onclick="return confirm('are you sure !')"
-                                                            action="{{ route('admin.bookings.destroy', $booking) }}"
+                                                            action="{{ route('admin.pengembalian.destroy', $booking) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
