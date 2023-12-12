@@ -9,7 +9,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data</h3>
+                            <h3 class="card-title">Edit Data Pengembalian <b>{{ $returns->members->name }}</b></h3>
                             <a href="{{ route('admin.pengembalian.index') }}" class="btn btn-success shadow-sm float-right">
                                 <i class="fa fa-arrow-left"></i> Kembali</a>
                         </div>
@@ -28,21 +28,44 @@
                                 </div>
 
 
-                                {{-- <div class="form-group row border-bottom pb-4">
-                                    <label for="total_pay" class="col-sm-2 col-form-label">Total Price</label>
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="no_plat" class="col-sm-2 col-form-label">No plat</label>
                                     <div class="col-sm-10">
-
-                                        <input type="number" class="form-control" name="total_pay"
-                                            value="{{ $booking->total_pay }}" id="total_pay">
+                                        <input type="text" class="form-control" name="no_plat"
+                                            value="{{ $returns->no_plat }}" id="no_plat">
                                     </div>
-                                </div> --}}
+                                </div>
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="total_pay" class="col-sm-2 col-form-label">Total Pay Peminjaman</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="total_pay"
+                                            value="{{ $returns->total_pay }}" id="total_pay">
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="bayar" class="col-sm-2 col-form-label">Member Bayar</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="bayar"
+                                            value="{{ $returns->bayar }}" id="bayar">
+                                    </div>
+                                </div>
 
                                 <div class="form-group row border-bottom pb-4">
                                     <label for="end_date" class="col-sm-2 col-form-label">Tanggal Akhir</label>
                                     <div class="col-sm-10">
-
                                         <input type="text" class="form-control" name="end_date"
                                             value="{{ $returns->end_date }}" id="end_date">
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="status" class="col-sm-2 col-form-label">Status Pembayaran</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="Lunas" {{ $returns->status == 'Lunas' ? 'selected' : null }}>
+                                                Belum Bayar</option>
+                                            <option value="Belum Bayar"
+                                                {{ $returns->status == 'Lunas' ? 'selected' : null }}>Lunas</option>
+                                        </select>
                                     </div>
                                 </div>
                                 {{-- {{ dd($booking) }} --}}

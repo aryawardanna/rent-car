@@ -11,4 +11,9 @@ class Pengembalian extends Model
     protected $guarded = ['id'];
 
     protected $table = 'pengembalian';
+
+    public function members()
+    {
+        return $this->belongsTo(Member::class, 'member_id', 'id');
+    }
 }

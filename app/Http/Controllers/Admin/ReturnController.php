@@ -47,7 +47,7 @@ class ReturnController extends Controller
      */
     public function edit(Pengembalian $pengembalian)
     {
-        $returns = Pengembalian::where('id', request()->segment(3))->first();
+        $returns = Pengembalian::where('id', request()->segment(3))->with('members')->first();
 
         return view('admin.pengembalian.edit', compact('returns'));
     }

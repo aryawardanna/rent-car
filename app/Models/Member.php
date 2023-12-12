@@ -12,4 +12,9 @@ class Member extends Model implements Authenticatable
     use HasFactory;
     use AuthenticableTrait;
     protected $guarded = ['id'];
+
+    public function pengembalian()
+    {
+        return $this->hasMany(Pengembalian::class, 'member_id', 'id');
+    }
 }
