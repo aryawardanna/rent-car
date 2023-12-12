@@ -20,7 +20,7 @@ Masuk ke folder dengan perintah
 ```
 
 ```bash
-    php artisan artisan migrate:fresh --seed
+    import db pada folder database file (laravel.sql)
 ```
 
 ```bash
@@ -35,7 +35,10 @@ Masuk ke folder dengan perintah
     npm run dev
 ```
 
-#### Login
-
+#### Login Admin
+-   http://localhost:8000/login
 -   email = admin@admin.com
 -   password = 123
+
+#### Login Member
+-   http://localhost:8000/loginmember

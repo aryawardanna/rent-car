@@ -155,7 +155,7 @@
                                         {{ $car->description }}
                                     </p>
                                     <p>
-                                        <a href="{{ route('car.show', $car) }}" class="btn btn-success btn-sm">Sewa
+                                        <a href="{{ route('member.register') }}" class="btn btn-success btn-sm">Sewa
                                             Sekarang</a>
                                     </p>
                                 </div>
