@@ -30,6 +30,7 @@ class CarsMemberController extends Controller
     {
         // Validasi data dari request
         $validatedData = $request->validate([
+            'member_id' => 'required',
             'car_id' => 'required',
             'nama_lengkap' => 'required|string',
             'start_date' => 'required|date',

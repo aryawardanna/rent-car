@@ -57,7 +57,17 @@ class ReturnController extends Controller
      */
     public function update(Request $request, Pengembalian $pengembalian)
     {
-        $pengembalian->update($request->all());
+        $pengembalian->total_date_sewa = $request->input('total_date_sewa');
+        $pengembalian->no_plat = $request->input('no_plat');
+        $pengembalian->total_pay = $request->input('total_pay');
+        $pengembalian->bayar = $request->input('bayar');
+        $pengembalian->end_date = $request->input('end_date');
+        $pengembalian->status = $request->input('status');
+        // Lanjutkan dengan atribut-atribut lain yang diizinkan untuk di-update
+        // dd($pengembalian->status);
+        $pengembalian->save();
+
+        // $pengembalian->update($request->all());
         return redirect()->route('admin.pengembalian.index')->with([
             'message' => 'berhasil di edit',
             'alert-type' => 'info'

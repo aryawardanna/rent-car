@@ -61,10 +61,11 @@
                                     <label for="status" class="col-sm-2 col-form-label">Status Pembayaran</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="status" id="status">
-                                            <option value="Lunas" {{ $returns->status == 'Lunas' ? 'selected' : null }}>
-                                                Belum Bayar</option>
+                                            <option value="Lunas" {{ $returns->status === 'Lunas' ? 'selected' : '' }}>
+                                                Lunas</option>
                                             <option value="Belum Bayar"
-                                                {{ $returns->status == 'Lunas' ? 'selected' : null }}>Lunas</option>
+                                                {{ $returns->status === 'Belum Bayar' ? 'selected' : '' }}>
+                                                Belum Bayar</option>
                                         </select>
                                     </div>
                                 </div>

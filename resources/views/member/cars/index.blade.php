@@ -54,7 +54,7 @@
                                                     <div class="btn-group btn-group-sm">
                                                         <a href="{{ route('member.cars.booking', ['carId' => $car->id]) }}"
                                                             class="btn btn-sm btn-primary">
-                                                            <i class="fa fa-edit"></i>
+                                                            Sewa
                                                         </a>
                                                         {{-- <form onclick="return confirm('are you sure !')"
                                                             action="{{ route('member.cars.destroy', $car) }}"
